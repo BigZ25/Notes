@@ -1,0 +1,67 @@
+html, body, .container-fluid, .row {
+    height: 100%;
+}
+
+.bg-nav {
+    background-color: #111827;
+}
+
+.bg-content {
+    background-color: #1f2937;
+}
+
+.a-link {
+    color: white;
+}
+
+.a-link:hover {
+    color: #c8c8c8;
+}
+
+.nav-link {
+    color: white;
+}
+
+.nav-link:hover {
+    color: white;
+    background-color: #1e40af;
+}
+
+.nav-link.active {
+    color: white;
+    background-color: #3b82f6;
+}
+
+.vgt-table tr > td > span {
+    display: flex;
+    align-items: center;
+    height: 20px;
+}
+
+.vgt-table tr > th > span,
+.vgt-table tr > td > span:not(.action_buttons) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20px;
+}
+
+.packing > td {
+    background-color: #ff6868 !important;
+}
+
+.to-pay > td {
+    background-color: #ffc368 !important;
+}
+
+.to-send > td {
+    background-color: #03cfb2 !important;
+}
+
+.sent > td {
+    background-color: #59bdfd !important;
+}
+
+.multiline {
+    white-space: pre-line;
+}

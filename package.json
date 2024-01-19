@@ -1,13 +1,41 @@
 {
     "private": true,
-    "type": "module",
     "scripts": {
-        "dev": "vite",
-        "build": "vite build"
+        "dev": "npm run development",
+        "development": "mix",
+        "watch": "mix watch",
+        "watch-poll": "mix watch -- --watch-options-poll=1000",
+        "hot": "mix watch --hot",
+        "prod": "npm run production",
+        "production": "mix --production"
     },
     "devDependencies": {
-        "axios": "^1.6.1",
-        "laravel-vite-plugin": "^1.0.0",
-        "vite": "^5.0.0"
+        "@vue/compiler-sfc": "^3.3.4",
+        "axios": "^0.21",
+        "laravel-mix": "^6.0.49",
+        "lodash": "^4.17.19",
+        "postcss": "^8.1.14",
+        "vue": "^2.7.14",
+        "vue-loader": "^15.10.2",
+        "vue-router": "^3.6.5",
+        "vue-template-compiler": "^2.6.12"
+    },
+    "dependencies": {
+        "bootstrap": "^4.6.2",
+        "bootstrap-vue": "^2.23.1",
+        "chart.js": "^4.4.0",
+        "chartjs-plugin-datalabels": "^2.2.0",
+        "chartjs-plugin-zoom": "^2.0.1",
+        "popper.js": "^1.16.1",
+        "portal-vue": "^2.1.7",
+        "vee-validate": "^3.4.15",
+        "vue-cookies": "^1.8.3",
+        "vue-draggable-resizable": "^2.3.0",
+        "vue-good-table": "^2.21.11",
+        "vue-media-upload": "^2.1.2",
+        "vue-resize-handle": "^1.0.0",
+        "vue-resource": "^1.5.3",
+        "vuedraggable": "^2.24.3",
+        "vuex": "^3.6.2"
     }
 }
