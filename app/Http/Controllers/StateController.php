@@ -2,11 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\DB\Enum\JapanVatEnum;
-use App\DB\Enum\ParcelTypeEnum;
-use App\DB\Enum\ParcelStatusEnum;
-use App\DB\Enum\UnitEnum;
-use App\Libs\OlxApi\OlxApi;
+use App\DB\Enum\ColorsEnum;
 use ReflectionClass;
 
 class StateController extends Controller
@@ -16,10 +12,7 @@ class StateController extends Controller
         return response()->json([
             'data' => [
                 'enums' => [
-//                    'JAPAN_VAT_ENUM' => $this->prepareEnumClass(JapanVatEnum::class, JapanVatEnum::getList()),
-//                    'PARCEL_TYPE_ENUM' => $this->prepareEnumClass(ParcelTypeEnum::class, ParcelTypeEnum::getList()),
-//                    'PARCEL_STATUS_ENUM' => $this->prepareEnumClass(ParcelStatusEnum::class, ParcelStatusEnum::getList()),
-//                    'UNIT_ENUM' => $this->prepareEnumClass(UnitEnum::class, UnitEnum::getList()),
+                    'COLORS_ENUM' => $this->prepareEnumClass(ColorsEnum::class, ColorsEnum::getList()),
                 ]
             ]
         ]);

@@ -8,7 +8,7 @@
         @resizestop="resizeNote"
         @dragstop="dragNote"
     >
-        <div class="sticky-note">
+        <div class="sticky-note" :class="backgroundClass">
             <div class="header">
                 <input v-model="note.title" placeholder="Title"/>
                 <b-button class="text-dark" @click="deleteNote">
@@ -16,6 +16,14 @@
                 </b-button>
             </div>
             <textarea v-model="note.content" placeholder="Content"></textarea>
+            <div class="footer">
+                <b-button
+                    v-for="color in $enum('COLORS_ENUM')"
+                    v-bind:key="color.value"
+                    :variant="color.label"
+                    @click="note.color=color.value"
+                />
+            </div>
         </div>
     </draggable-resizable>
 </template>
@@ -54,11 +62,19 @@ export default {
             this.$emit('dragNote', this.note);
         },
     },
+    computed: {
+        backgroundClass() {
+            return "bg-" + this.$enum('COLORS_ENUM', this.note.color)
+        }
+    },
     watch: {
         'note.title': function () {
             this.$emit('change', this.note);
         },
         'note.content': function () {
+            this.$emit('change', this.note);
+        },
+        'note.color': function () {
             this.$emit('change', this.note);
         }
     },
@@ -66,14 +82,15 @@ export default {
 </script>
 
 <style scoped>
+
 .sticky-note {
     width: 100%;
     height: 100%;
-//position: absolute; border: 1px solid #ccc; background-color: #fff; overflow: hidden;
 }
 
 .sticky-note > .header {
     width: 100%;
+    height: 10%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -89,6 +106,8 @@ export default {
 }
 
 .footer {
+    width: 100%;
+    height: 10%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -97,7 +116,7 @@ export default {
 
 .sticky-note > textarea {
     width: 100%;
-    height: 100%;
+    height: 80%;
     border: none;
     resize: none;
 }
