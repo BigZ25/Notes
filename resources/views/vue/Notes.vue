@@ -8,6 +8,7 @@
                 @deleteNote="deleteNote"
                 @resizeNote="resizeNote"
                 @dragNote="dragNote"
+                @change="updateNote"
             />
         </b-card>
     </div>
@@ -24,52 +25,44 @@ export default {
     name: 'Notes',
     data: function () {
         return {
-            notes: [
-                {
-                    id: 1,
-                    title: 'Note 1',
-                    content: 'Lorem ipsum...',
-                    color: '#ffffcc',
-                    x: 50,
-                    y: 50,
-                    zIndex: 1,
-                    width: 200,
-                    height: 150,
-                },
-                {
-                    id: 2,
-                    title: 'Notka',
-                    content: 'Content',
-                    color: '#ffffcc',
-                    x: 300,
-                    y: 300,
-                    zIndex: 2,
-                    width: 300,
-                    height: 250,
-                },
-            ]
+            notes: []
         }
     },
     computed: {},
     methods: {
         getNotes: function () {
             this.$http.get('/api/notes').then(response => {
-                this.data = response.data.data
+                this.notes = response.data.data.notes
             })
         },
-        updateNote: function (id, data) {
-            this.$http.put('/api/notes/' + id, data).then(response => {
+        updateNote: function (note) {
+            let data = {
+                title: note.title,
+                content: note.content,
+                color: note.color,
+                pos_x: note.x,
+                pos_y: note.y,
+                pos_z: note.zIndex,
+                width: note.width,
+                height: note.height
+            }
+
+            this.$http.put('/api/notes/' + note.id, data).then(response => {
 
             })
         },
-        deleteNote(id) {
+        deleteNote(note) {
             //alert("DELETE: " + id)
         },
-        resizeNote(id, x, y, width, height) {
-            console.log(id + " / " + x + " / " + y + " / " + width + " / " + height)
+        resizeNote(note) {
+            this.updateNote(note)
+            //console.log(this.notes.find(item => item.id === note.id))
+            //console.log(id + " / " + x + " / " + y + " / " + width + " / " + height)
         },
-        dragNote(id, x, y) {
-            console.log(id + " / " + x + " / " + y)
+        dragNote(note) {
+            this.updateNote(note)
+            //console.log(this.notes.find(item => item.id === note.id))
+            //console.log(id + " / " + x + " / " + y)
         },
     },
     created() {

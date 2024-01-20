@@ -21,4 +21,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
     ];
+
+    public function notes()
+    {
+        return $this->belongsTo(Note::class, 'id', 'user_id');
+    }
 }

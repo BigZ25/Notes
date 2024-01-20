@@ -26,6 +26,9 @@ import DraggableResizable from 'vue-draggable-resizable';
 
 export default {
     name: 'StickyNote',
+    components: {
+        draggableResizable: DraggableResizable,
+    },
     props: {
         note: {
             type: Object,
@@ -34,25 +37,30 @@ export default {
     },
     methods: {
         deleteNote() {
-            this.$emit('deleteNote', this.note.id);
+            this.$emit('deleteNote', this.note);
         },
         resizeNote(x, y, width, height) {
-            this.$emit('resizeNote', this.note.id, x, y, width, height);
+            this.note.x = x
+            this.note.y = y
+            this.note.width = width
+            this.note.height = height
+
+            this.$emit('resizeNote', this.note);
         },
         dragNote(x, y) {
-            this.$emit('dragNote', this.note.id, x, y);
+            this.note.x = x
+            this.note.y = y
+
+            this.$emit('dragNote', this.note);
         },
     },
-    computed: {
-        // noteStyle() {
-        //     return {
-        //         backgroundColor: this.note.color,
-        //         zIndex: this.note.zIndex,
-        //     };
-        // },
-    },
-    components: {
-        draggableResizable: DraggableResizable,
+    watch: {
+        'note.title': function () {
+            this.$emit('change', this.note);
+        },
+        'note.content': function () {
+            this.$emit('change', this.note);
+        }
     },
 };
 </script>

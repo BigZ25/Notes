@@ -1,36 +1,17 @@
 <?php
 
-function successMessage($message, $additional_data = null)
+function vueResponse($message = null, $type = null, $data = null)
 {
-    $data = [
-        'message' => $message,
-        'type' => 'success',
-    ];
+    $response = [];
 
-    if ($additional_data) {
-        $data['additional_data'] = $additional_data;
+    if ($message) {
+        $response['message'] = $message;
+        $response['type'] = $type ?? 'warning';
     }
 
-    return response()->json([
-        'data' => $data
-    ]);
-}
+    if ($data) {
+        $response['data'] = $data;
+    }
 
-function errorResponse($message, $status = 404)
-{
-    $data = [
-        'message' => $message,
-        'type' => 'danger',
-    ];
-
-    return response()->json([
-        'data' => $data
-    ], $status);
-}
-
-function modelResponse($entity)
-{
-    return response()->json([
-        'data' => $entity
-    ]);
+    return response()->json($response);
 }

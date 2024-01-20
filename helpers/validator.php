@@ -1,20 +1,5 @@
 <?php
 
-function priceRules($required = true): array
-{
-    return [
-        ($required === true ? 'required' : 'nullable'),
-        decimalRegexRule(),
-    ];
-}
-
-function decimalRules($required = true, $decimals = 2): array
-{
-    return [
-        ($required === true ? 'required' : 'nullable'),
-        decimalRegexRule($decimals),
-    ];
-}
 
 function stringRules($required = true, int $length = 255): array
 {
@@ -25,45 +10,6 @@ function stringRules($required = true, int $length = 255): array
     ];
 }
 
-function dateRules($required = true, $after = null)
-{
-    $rules = [
-        ($required === true ? 'required' : 'nullable'),
-        'date',
-    ];
-
-    if ($after !== null) {
-        $rules[] = 'after:' . $after;
-    }
-
-    return $rules;
-}
-
-function yearRules($required = true, $min = 1900, $max = null): array
-{
-    $rules = [
-        ($required === true ? 'required' : 'nullable'),
-        'digits:4',
-        'integer',
-        'min:' . $min,
-    ];
-
-    if ($max !== null) {
-        $rules[] = 'max:' . $max;
-    }
-
-    return $rules;
-}
-
-function monthRules($required = true): array
-{
-    return [
-        ($required === true ? 'required' : 'nullable'),
-        'integer',
-        'min:1',
-        'max:12',
-    ];
-}
 
 function integerRules($required = true, $min = null, $max = null, $gt = null): array
 {
@@ -87,32 +33,6 @@ function integerRules($required = true, $min = null, $max = null, $gt = null): a
     return $rules;
 }
 
-function arrayRules($required = true, $min = 0): array
-{
-    $rules = [
-        ($required === true ? 'required' : 'nullable'),
-        'array',
-        'min:' . $min
-    ];
-
-    return $rules;
-}
-
-function idRules($table, $column = 'id', $required = true, $different = null): array
-{
-    $rules = [
-        ($required === true ? 'required' : 'nullable'),
-        'integer',
-        'exists:' . $table . ',' . $column,
-    ];
-
-    if ($different !== null) {
-        $rules[] = 'different:' . $different;
-    }
-
-    return $rules;
-}
-
 function enumRules($class, $required = true): array
 {
     $rules = [
@@ -124,38 +44,6 @@ function enumRules($class, $required = true): array
     return $rules;
 }
 
-function boolRules($required = true): array
-{
-    $rules = [
-        ($required === true ? 'required' : 'nullable'),
-        'integer',
-        'in:0,1',
-    ];
-
-    return $rules;
-}
-
-function notesRules($required = false, $length = 1000): array
-{
-    return stringRules($required, $length);
-}
-
-function nipRules($required = true): array
-{
-    return [
-        ($required === true ? 'required' : 'nullable'),
-        'numeric',
-        'regex:/^[0-9]{10}$/'
-    ];
-}
-
-function postcodeRules($required = true): array
-{
-    return [
-        ($required === true ? 'required' : 'nullable'),
-        'regex:/^[0-9]{2}-[0-9]{3}$/'
-    ];
-}
 
 function emailRules($required = true, int $length = 255): array
 {
