@@ -2,26 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\DB\Models\Note;
 use App\Http\Requests\NoteRequest;
 use Illuminate\Http\Request;
-use ZipArchive;
 
 class NoteController extends Controller
 {
     public function store(NoteRequest $request)
     {
-        $advert = Note::create($request->validated() + ['user_id' => auth()->user()->id]);
-        $this->storePhotos($advert, $request->photos);
+        $note = Note::create($request->validated() + ['user_id' => auth()->user()->id]);
 
-        return successMessage("Ogłoszenie zostało zapisane", ['id' => $advert->id]);
+        //return successMessage("Ogłoszenie zostało zapisane", ['id' => $note->id]);
     }
 
-    public function update(NoteRequest $request, Note $advert)
+    public function update(NoteRequest $request, Note $note)
     {
-        $advert->update($request->validated());
-        $this->storePhotos($advert, $request->photos);
+        $note->update($request->validated());
 
-        return successMessage("Zmiany zostały zapisane", ['id' => $advert->id]);
+//        return successMessage("Zmiany zostały zapisane", ['id' => $note->id]);
     }
 
     public function destroy(Request $request)

@@ -1,28 +1,29 @@
 <template>
     <div>
-        <b-card class="mt-3 mb-3">
-            <b-col class="md-12">
-                <b-row>
-                    <StickyNotes :notes="notes"/>
-                </b-row>
-            </b-col>
+        <b-card class="mt-3 mb-3" body-class="p-0 m-0" style="height: 1000px; width: 100%;">
+            <sticky-note
+                v-for="note in notes"
+                v-bind:key="note.id"
+                :note="note"
+                @deleteNote="deleteNote"
+                @resizeNote="resizeNote"
+                @dragNote="dragNote"
+            />
         </b-card>
     </div>
 </template>
 
 <script>
 
-import {Chart, registerables} from 'chart.js/auto'
-import StickyNotes from './components/StickyNotes.vue'
+import StickyNote from "./components/StickyNote.vue";
 
 export default {
     components: {
-        StickyNotes,
+        StickyNote
     },
     name: 'Notes',
     data: function () {
         return {
-            data: null,
             notes: [
                 {
                     id: 1,
@@ -49,18 +50,30 @@ export default {
             ]
         }
     },
-    computed: {
-    },
+    computed: {},
     methods: {
-        getData: function () {
-            this.$http.get('/api/desktop').then(response => {
+        getNotes: function () {
+            this.$http.get('/api/notes').then(response => {
                 this.data = response.data.data
-                this.renderChart()
             })
+        },
+        updateNote: function (id, data) {
+            this.$http.put('/api/notes/' + id, data).then(response => {
+
+            })
+        },
+        deleteNote(id) {
+            //alert("DELETE: " + id)
+        },
+        resizeNote(id, x, y, width, height) {
+            console.log(id + " / " + x + " / " + y + " / " + width + " / " + height)
+        },
+        dragNote(id, x, y) {
+            console.log(id + " / " + x + " / " + y)
         },
     },
     created() {
-        this.getData()
+        this.getNotes()
     }
 }
 </script>

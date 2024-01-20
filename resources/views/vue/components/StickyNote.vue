@@ -5,8 +5,8 @@
         :h="note.height"
         :x="note.x"
         :y="note.y"
-        @resizing="onResize"
-        @dragging="onDragging"
+        @resizestop="resizeNote"
+        @dragstop="dragNote"
     >
         <div class="sticky-note">
             <div class="header">
@@ -16,10 +16,6 @@
                 </b-button>
             </div>
             <textarea v-model="note.content" placeholder="Content"></textarea>
-            <!--                    <div class="footer">-->
-            <!--                        <input v-model="note.title" placeholder="Title"/>-->
-            <!--                        &lt;!&ndash;                        <button @click="deleteNote">Delete</button>&ndash;&gt;-->
-            <!--                    </div>-->
         </div>
     </draggable-resizable>
 </template>
@@ -38,18 +34,13 @@ export default {
     },
     methods: {
         deleteNote() {
-            // this.$emit('deleteNote', this.note.id);
+            this.$emit('deleteNote', this.note.id);
         },
-        onResize(x, y, width, height) {
-            console.log(x + " / " + y + " / " + width + " / " + height)
-            // this.note.width = width;
-            // this.note.height = height;
+        resizeNote(x, y, width, height) {
+            this.$emit('resizeNote', this.note.id, x, y, width, height);
         },
-        onDragging(x, y) {
-            console.log(x + " / " + y)
-
-            // this.note.x = x;
-            // this.note.y = y;
+        dragNote(x, y) {
+            this.$emit('dragNote', this.note.id, x, y);
         },
     },
     computed: {
