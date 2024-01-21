@@ -10,5 +10,5 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:api');
 Route::put('/settings', [AuthController::class, 'settings'])->middleware('auth:api');
 Route::get('/state', [StateController::class, 'index']);//TODO: ->middleware('auth:api');
-Route::get('/pluck', [PluckController::class, 'index'])->middleware('auth:api');
+Route::resource('tabs', TabController::class)->middleware('auth:api');
 Route::resource('notes', NoteController::class)->middleware('auth:api');

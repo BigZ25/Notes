@@ -22,6 +22,11 @@ class User extends Authenticatable
         'password',
     ];
 
+    public function tabs()
+    {
+        return $this->belongsTo(Tab::class, 'id', 'user_id');
+    }
+
     public function notes()
     {
         return $this->belongsTo(Note::class, 'id', 'user_id');
