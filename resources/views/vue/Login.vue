@@ -45,10 +45,10 @@ export default {
             bvModalEvent.preventDefault()
 
             this.$http.post('/api/login', this.form).then(response => {
-                let data = response.data.data.additional_data.session
+                let data = response.data.data.session
                 this.$auth.login(data.access_token, data.user, data.auth_token)
 
-                this.$router.push({name: 'Desktop'});
+                this.$router.push({name: 'Notes'});
             }).catch(error => {
                 // if (error && error.data.errors) {
                 //     this.$refs.loginForm.setErrors(error.data.errors)

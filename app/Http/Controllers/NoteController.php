@@ -13,6 +13,7 @@ class NoteController extends Controller
         $notes = auth()->user()->notes()->get()->map(function ($note) {
             return [
                 'id' => $note->id,
+                'tab_id' => $note->tab_id,
                 'title' => $note->title,
                 'content' => $note->content,
                 'color' => $note->color,

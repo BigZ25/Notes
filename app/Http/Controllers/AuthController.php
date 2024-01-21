@@ -22,14 +22,15 @@ class AuthController extends Controller
 
         $token = auth()->user()->createToken('authToken');
 
-        return successMessage("Zalogowano", additional_data: [
-            'session' => [
-                'access_token' => $token->accessToken,
-                'auth_token' => $token->token->id,
-                'user' => auth()->user()
+        return vueResponse('Zalogowano', 'success',
+            [
+                'session' => [
+                    'access_token' => $token->accessToken,
+                    'auth_token' => $token->token->id,
+                    'user' => auth()->user()
+                ]
             ]
-        ]);
-
+        );
     }
 
     public function logout(Request $request)
@@ -37,7 +38,7 @@ class AuthController extends Controller
         $token = $request->user()->token();
         $token->revoke();
 
-        return successMessage("Wylogowano");
+        return vueResponse('Wylogowano', 'success');
     }
 
     public function settings(SettingsRequest $request)
@@ -53,6 +54,6 @@ class AuthController extends Controller
 
         auth()->user()->update($data);
 
-        return successMessage("Ustawienia zostały zapisane");
+        return vueResponse('Ustawienia zostały zapisane', 'success');
     }
 }

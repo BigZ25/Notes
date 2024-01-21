@@ -2,8 +2,8 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\NoteController;
+use App\Http\Controllers\TabController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PluckController;
 use App\Http\Controllers\StateController;
 
 Route::post('/login', [AuthController::class, 'login']);

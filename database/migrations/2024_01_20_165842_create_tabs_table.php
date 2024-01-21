@@ -17,6 +17,9 @@ class CreateTabsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('name');
+            $table->softDeletes();
+            $table->timestamps();
+            $table->userstamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }

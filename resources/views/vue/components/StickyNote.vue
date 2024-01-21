@@ -1,31 +1,33 @@
 <template>
-    <draggable-resizable
-        :parent="true"
-        :w="note.width"
-        :h="note.height"
-        :x="note.x"
-        :y="note.y"
-        @resizestop="resizeNote"
-        @dragstop="dragNote"
-    >
-        <div class="sticky-note" :class="backgroundClass">
-            <div class="header">
-                <input v-model="note.title" placeholder="Title"/>
-                <b-button class="text-dark" @click="deleteNote">
-                    <b-icon icon="trash"/>
-                </b-button>
+    <span>
+        <draggable-resizable
+            :parent="true"
+            :w="note.width"
+            :h="note.height"
+            :x="note.x"
+            :y="note.y"
+            @resizestop="resizeNote"
+            @dragstop="dragNote"
+        >
+            <div class="sticky-note" :class="backgroundClass">
+                <div class="header">
+                    <input v-model="note.title" placeholder="Title"/>
+                    <b-button class="text-dark" @click="deleteNote">
+                        <b-icon icon="trash"/>
+                    </b-button>
+                </div>
+                <textarea v-model="note.content" placeholder="Content"></textarea>
+                <div class="footer">
+                    <b-button
+                        v-for="color in $enum('COLORS_ENUM')"
+                        v-bind:key="color.value"
+                        :variant="color.label"
+                        @click="note.color=color.value"
+                    />
+                </div>
             </div>
-            <textarea v-model="note.content" placeholder="Content"></textarea>
-            <div class="footer">
-                <b-button
-                    v-for="color in $enum('COLORS_ENUM')"
-                    v-bind:key="color.value"
-                    :variant="color.label"
-                    @click="note.color=color.value"
-                />
-            </div>
-        </div>
-    </draggable-resizable>
+        </draggable-resizable>
+    </span>
 </template>
 
 <script>
@@ -58,7 +60,7 @@ export default {
         dragNote(x, y) {
             this.note.x = x
             this.note.y = y
-
+            console.log(this.note)
             this.$emit('dragNote', this.note);
         },
     },

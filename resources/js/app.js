@@ -43,11 +43,13 @@ Vue.http.get('/api/state').then(response => {
 
                 next((response) => {
                     if (response.status === 200) {
-                        this.$bvToast.toast(response.data.data.message, {
-                            title: response.data.data.title ?? 'Powiadomienie',
-                            variant: response.data.data.type ?? 'info',
-                            autoHideDelay: 5000,
-                        })
+                        if (response.data.data.message) {
+                            this.$bvToast.toast(response.data.data.message, {
+                                title: response.data.data.title ?? 'Powiadomienie',
+                                variant: response.data.data.type ?? 'info',
+                                autoHideDelay: 5000,
+                            })
+                        }
                     }
 
                     if (response.status === 422) {
@@ -69,6 +71,7 @@ Vue.http.get('/api/state').then(response => {
                             autoHideDelay: 5000,
                         })
 
+                        Auth.logout()
                         router.push('/login')
                     }
 
