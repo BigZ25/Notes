@@ -1,6 +1,6 @@
 <template>
     <div v-if="render">
-        <b-card class="mt-3 mb-3" body-class="p-0 m-0" style="height: 1000px; width: 100%;" no-body>
+        <b-card class="mt-3 mb-3" no-body>
             <b-tabs v-model="activeTab" card>
                 <b-tab v-for="tab in tabs" v-bind:key="tab.id">
                     <template #title>
@@ -9,15 +9,17 @@
                             <b-icon icon="trash"/>
                         </span>
                     </template>
-                    <sticky-note
-                        v-for="note in notes.filter((iNote) => iNote.tab_id == tabs[activeTab].id)"
-                        v-bind:key="note.id"
-                        :note="note"
-                        @deleteNote="deleteNote"
-                        @resizeNote="resizeNote"
-                        @dragNote="dragNote"
-                        @change="updateNote"
-                    />
+                    <div style="height: 1000px; width: 100%;">
+                        <sticky-note
+                            v-for="note in notes.filter((iNote) => iNote.tab_id == tabs[activeTab].id)"
+                            v-bind:key="note.id"
+                            :note="note"
+                            @deleteNote="deleteNote"
+                            @resizeNote="resizeNote"
+                            @dragNote="dragNote"
+                            @change="updateNote"
+                        />
+                    </div>
                 </b-tab>
                 <template #tabs-end>
                     <b-nav-item role="presentation" @click.prevent="addTab" href="#"><b class="text-primary">+</b>
@@ -72,6 +74,25 @@ export default {
                 this.render = true
             })
         },
+        store: function (note) {
+            console.log(note)
+            let data = {
+                tab_id: note.tab_id,
+                title: note.title,
+                content: note.content,
+                color: note.color,
+                pos_x: note.x,
+                pos_y: note.y,
+                pos_z: note.zIndex,
+                width: note.width,
+                height: note.height
+            }
+
+            this.$http.post('/api/notes', data).then(response => {
+
+                }
+            )
+        },
         updateNote: function (note) {
             console.log(note)
             let data = {
@@ -88,20 +109,24 @@ export default {
             this.$http.put('/api/notes/' + note.id, data).then(response => {
 
             })
-        },
+        }
+        ,
         deleteNote(note) {
             //alert("DELETE: " + id)
-        },
+        }
+        ,
         resizeNote(note) {
             this.updateNote(note)
             //console.log(this.notes.find(item => item.id === note.id))
             //console.log(id + " / " + x + " / " + y + " / " + width + " / " + height)
-        },
+        }
+        ,
         dragNote(note) {
             this.updateNote(note)
             //console.log(this.notes.find(item => item.id === note.id))
             //console.log(id + " / " + x + " / " + y)
-        },
+        }
+        ,
     },
     created() {
         this.getTabs()
