@@ -14,7 +14,7 @@
                             v-for="note in notes.filter((iNote) => iNote.tab_id == tabs[activeTab].id)"
                             v-bind:key="note.id"
                             :note="note"
-                            @deleteNote="deleteNote"
+                            @deleteNote="showDeleteNoteModal"
                             @resizeNote="resizeNote"
                             @dragNote="dragNote"
                             @change="updateNote"
@@ -27,27 +27,40 @@
                 </template>
             </b-tabs>
         </b-card>
+        <delete-modal
+            :show="noteToDelete !== null"
+            title="Usuwanie notatki"
+            :question="deleteNoteModalQuestion"
+            @confirm="deleteNote"
+            @cancel="closeDeleteNoteModal"/>
     </div>
 </template>
 
 <script>
 
 import StickyNote from "./components/StickyNote.vue";
+import DeleteModal from "./components/DeleteModal.vue";
 
 export default {
     components: {
+        DeleteModal,
         StickyNote
     },
     name: 'Notes',
     data: function () {
         return {
+            noteToDelete: null,
             render: false,
             activeTab: 0,
             tabs: [],
             notes: []
         }
     },
-    computed: {},
+    computed: {
+        deleteNoteModalQuestion: function () {
+            return this.noteToDelete !== null ? (this.noteToDelete.title ? `Czy napewno chcesz usunąć notatkę ${this.noteToDelete.title}?` : "Czy napewno chcesz usunąć tą notatkę?") : ""
+        }
+    },
     methods: {
         addTab: function () {
             let data = {
@@ -74,7 +87,7 @@ export default {
                 this.render = true
             })
         },
-        store: function (note) {
+        storeNote: function (note) {
             console.log(note)
             let data = {
                 tab_id: note.tab_id,
@@ -109,24 +122,25 @@ export default {
             this.$http.put('/api/notes/' + note.id, data).then(response => {
 
             })
-        }
-        ,
-        deleteNote(note) {
-            //alert("DELETE: " + id)
-        }
-        ,
+        },
+        showDeleteNoteModal(note) {
+            this.noteToDelete = note
+        },
+        deleteNote() {
+            this.$http.delete('/api/notes/' + this.noteToDelete.id).then(() => {
+                this.notes = this.notes.filter(note => note.id !== this.noteToDelete.id);
+                this.closeDeleteNoteModal()
+            })
+        },
         resizeNote(note) {
             this.updateNote(note)
-            //console.log(this.notes.find(item => item.id === note.id))
-            //console.log(id + " / " + x + " / " + y + " / " + width + " / " + height)
-        }
-        ,
+        },
         dragNote(note) {
             this.updateNote(note)
-            //console.log(this.notes.find(item => item.id === note.id))
-            //console.log(id + " / " + x + " / " + y)
+        },
+        closeDeleteNoteModal() {
+            this.noteToDelete = null
         }
-        ,
     },
     created() {
         this.getTabs()

@@ -42,12 +42,10 @@ class NoteController extends Controller
 //        return successMessage("Zmiany zostały zapisane", ['id' => $note->id]);
     }
 
-    public function destroy(Request $request)
+    public function destroy(Note $note)
     {
-        foreach ($request->ids as $id) {
-            Note::find($id)->delete();
-        }
+        $note->delete();
 
-        return successMessage(count($request->ids) > 1 ? "Ogłoszenia zostały usunięte" : "Ogłoszenie zostało usunięte");
+        return vueResponse('Notatka została usunięta', 'success');
     }
 }

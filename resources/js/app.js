@@ -43,10 +43,10 @@ Vue.http.get('/api/state').then(response => {
 
                 next((response) => {
                     if (response.status === 200) {
-                        if (response.data.data.message) {
-                            this.$bvToast.toast(response.data.data.message, {
-                                title: response.data.data.title ?? 'Powiadomienie',
-                                variant: response.data.data.type ?? 'info',
+                        if (response.data.message) {
+                            this.$bvToast.toast(response.data.message, {
+                                title: 'Powiadomienie',
+                                variant: response.data.type ?? 'info',
                                 autoHideDelay: 5000,
                             })
                         }
