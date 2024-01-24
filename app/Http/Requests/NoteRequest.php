@@ -15,6 +15,7 @@ class NoteRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'tab_id' => foreignKeyRules('tabs'),
             'title' => stringRules(false),
             'content' => stringRules(false),
             'color' => enumRules(ColorsEnum::class),

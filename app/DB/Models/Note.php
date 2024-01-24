@@ -12,6 +12,7 @@ class Note extends Model
 
     protected $fillable = [
         'user_id',
+        'tab_id',
         'title',
         'content',
         'color',
@@ -21,4 +22,20 @@ class Note extends Model
         'width',
         'height'
     ];
+
+    public function parseToVue(): array
+    {
+        return [
+            'id' => $this->id,
+            'tab_id' => $this->tab_id,
+            'title' => $this->title,
+            'content' => $this->content,
+            'color' => $this->color,
+            'x' => $this->pos_x,
+            'y' => $this->pos_y,
+            'zIndex' => $this->pos_z,
+            'width' => $this->width,
+            'height' => $this->height,
+        ];
+    }
 }

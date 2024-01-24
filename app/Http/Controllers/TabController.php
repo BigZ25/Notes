@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\DB\Models\Tab;
 use App\Http\Requests\TabRequest;
-use Illuminate\Http\Request;
 
 class TabController extends Controller
 {
@@ -25,16 +24,12 @@ class TabController extends Controller
     public function update(TabRequest $request, Tab $tab)
     {
         $tab->update($request->validated());
-
-//        return successMessage("Zmiany zostały zapisane", ['id' => $tab->id]);
     }
 
-    public function destroy(Request $request)
+    public function destroy(Tab $tab)
     {
-        foreach ($request->ids as $id) {
-            Tab::find($id)->delete();
-        }
+        $tab->delete();
 
-        return successMessage(count($request->ids) > 1 ? "Ogłoszenia zostały usunięte" : "Ogłoszenie zostało usunięte");
+        return vueResponse('Zakładka została usunięta', 'success');
     }
 }

@@ -53,3 +53,11 @@ function emailRules($required = true, int $length = 255): array
         'max:' . $length,
     ];
 }
+
+function foreignKeyRules($table, $column = 'id', $required = true): array
+{
+    return [
+        ($required === true ? 'required' : 'nullable'),
+        "exists:$table,$column"
+    ];
+}
