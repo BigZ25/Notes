@@ -5,7 +5,7 @@
                 <b-tab v-for="tab in tabs" v-bind:key="tab.id">
                     <template #title>
                         <span class="text-dark">
-                             {{ tab.name }}
+                            <span @dblclick="showEditTabModal(tab.id)">{{ tab.name }}</span>
                             <b-icon icon="trash" @click="showDeleteTabModal"/>
                         </span>
                     </template>
@@ -41,6 +41,15 @@
             @confirm="deleteTab"
             @cancel="closeDeleteTabModal"
         />
+        <b-modal id="editTabModal" title="Edycja zakładki">
+            <b-form-input v-if="tabToEdit" v-model="tabToEdit.name" placeholder="Title"/>
+            <template #modal-footer>
+                <div>
+                    <b-button @click="updateTab(tabToEdit)" variant="primary">Zapisz</b-button>
+                    <b-button @click="closeEditTabModal">Anuluj</b-button>
+                </div>
+            </template>
+        </b-modal>
     </div>
 </template>
 
@@ -59,6 +68,7 @@ export default {
         return {
             noteToDelete: null,
             tabToDelete: null,
+            tabToEdit: null,
             render: false,
             activeTab: 0,
             tabs: [],
@@ -70,7 +80,7 @@ export default {
             return this.noteToDelete !== null ? (this.noteToDelete.title ? `Czy napewno chcesz usunąć notatkę ${this.noteToDelete.title}?` : "Czy napewno chcesz usunąć tą notatkę?") : ""
         },
         deleteTabModalQuestion: function () {
-            return this.tabToDelete !== null ? `Czy napewno chcesz usunąć notatkę ${this.tabToDelete.name}?` : ""
+            return this.tabToDelete !== null ? `Czy napewno chcesz usunąć zakładkę ${this.tabToDelete.name}?` : ""
         }
     },
     methods: {
@@ -90,6 +100,17 @@ export default {
                 this.tabs.push(tab);
             })
         },
+        updateTab: function (tab) {
+            this.$http.put('/api/tabs/' + tab.id, tab).then(response => {
+                this.tabs = this.tabs.map(tabI => {
+                    if (tabI.id === tab.id) {
+                        return response.data.data.tab;
+                    }
+                    return tabI;
+                });
+                this.closeEditTabModal()
+            })
+        },
         showDeleteTabModal() {
             this.tabToDelete = this.tabs[this.activeTab]
         },
@@ -102,6 +123,17 @@ export default {
         },
         closeDeleteTabModal() {
             this.tabToDelete = null
+        },
+        closeDeleteNoteModal() {
+            this.noteToDelete = null
+        },
+        showEditTabModal(tabId) {
+            this.tabToEdit = Object.assign({}, this.tabs.filter((tab) => tab.id === tabId)[0]);
+            this.$bvModal.show('editTabModal')
+        },
+        closeEditTabModal() {
+            this.tabToEdit = null
+            this.$bvModal.hide('editTabModal')
         },
         getNotes: function () {
             this.$http.get('/api/notes').then(response => {
@@ -159,9 +191,6 @@ export default {
         dragNote(note) {
             this.updateNote(note)
         },
-        closeDeleteNoteModal() {
-            this.noteToDelete = null
-        }
     },
     created() {
         this.getTabs()

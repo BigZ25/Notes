@@ -24,6 +24,8 @@ class TabController extends Controller
     public function update(TabRequest $request, Tab $tab)
     {
         $tab->update($request->validated());
+
+        return vueResponse(data: ['tab' => $tab]);
     }
 
     public function destroy(Tab $tab)

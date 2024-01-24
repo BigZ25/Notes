@@ -26,6 +26,8 @@ class NoteController extends Controller
     public function update(NoteRequest $request, Note $note)
     {
         $note->update($request->validated());
+
+        return vueResponse(data: ['note' => $note->parseToVue()]);
     }
 
     public function destroy(Note $note)
