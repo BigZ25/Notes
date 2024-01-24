@@ -1,10 +1,23 @@
 <template>
     <div>
-        <b-modal id="loginFormModal" title="Logowanie" hide-header-close no-close-on-backdrop no-close-on-esc ok-only
-                 ok-title="Zaloguj się" @ok="submit">
-            <ValidationObserver ref="loginForm" v-slot="{ passes }" slim>
+        <b-modal id="registerFormModal" title="Rejestracja" hide-header-close no-close-on-backdrop no-close-on-esc
+                 ok-only
+                 ok-title="Załóż konto" @ok="submit">
+            <ValidationObserver ref="registerForm" v-slot="{ passes }" slim>
                 <b-form>
                     <b-col class="md-12">
+                        <b-row>
+                            <validation-provider v-slot="{ invalid, validated, errors }" vid="name">
+                                <text-input v-model="form.name" label="Imię"
+                                            :custom-class="{ 'border-danger': validated && invalid }"/>
+                            </validation-provider>
+                        </b-row>
+                        <b-row>
+                            <validation-provider v-slot="{ invalid, validated, errors }" vid="surname">
+                                <text-input v-model="form.surname" label="Nazwisko"
+                                            :custom-class="{ 'border-danger': validated && invalid }"/>
+                            </validation-provider>
+                        </b-row>
                         <b-row>
                             <validation-provider v-slot="{ invalid, validated, errors }" vid="email">
                                 <text-input v-model="form.email" label="Adres e-mail"
@@ -18,8 +31,8 @@
                             </validation-provider>
                         </b-row>
                         <b-row>
-                            <router-link to="/register" class="form-group text-dark m-2 mb-0">
-                                Załóż konto
+                            <router-link to="/login" class="form-group text-dark m-2 mb-0">
+                                Przejdź do logowania
                             </router-link>
                         </b-row>
                     </b-col>
@@ -35,7 +48,7 @@ import TextInput from './components/form/TextInput'
 import PasswordInput from './components/form/PasswordInput'
 
 export default {
-    name: 'Login',
+    name: 'Register',
     components: {
         TextInput,
         PasswordInput
@@ -43,6 +56,8 @@ export default {
     data: function () {
         return {
             form: {
+                name: null,
+                surname: null,
                 email: null,
                 password: null
             }
@@ -52,7 +67,7 @@ export default {
         submit: function (bvModalEvent) {
             bvModalEvent.preventDefault()
 
-            this.$http.post('/api/login', this.form).then(response => {
+            this.$http.post('/api/register', this.form).then(response => {
                 let data = response.data.data.session
                 this.$auth.login(data.access_token, data.user, data.auth_token)
 
@@ -66,7 +81,7 @@ export default {
         }
     },
     mounted() {
-        this.$bvModal.show('loginFormModal')
+        this.$bvModal.show('registerFormModal')
     }
 }
 </script>

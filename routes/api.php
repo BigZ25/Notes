@@ -6,6 +6,7 @@ use App\Http\Controllers\TabController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StateController;
 
+Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:api');
 Route::put('/settings', [AuthController::class, 'settings'])->middleware('auth:api');

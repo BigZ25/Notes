@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\DB\Models\User;
 use App\Http\Requests\LoginRequest;
+use App\Http\Requests\RegisterRequest;
 use App\Http\Requests\SettingsRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -23,6 +25,31 @@ class AuthController extends Controller
         $token = auth()->user()->createToken('authToken');
 
         return vueResponse('Zalogowano', 'success',
+            [
+                'session' => [
+                    'access_token' => $token->accessToken,
+                    'auth_token' => $token->token->id,
+                    'user' => auth()->user()
+                ]
+            ]
+        );
+    }
+
+    public function register(RegisterRequest $request)
+    {
+        $data = $request->validated();
+        $data['password'] = bcrypt($data['password']);
+        $user = User::create($data);
+        $credentials = [
+            'email' => $user->email,
+            'password' => $request->password
+        ];
+
+        Auth::attempt($credentials);
+
+        $token = auth()->user()->createToken('authToken');
+
+        return vueResponse('Konto zostało utworzone', 'success',
             [
                 'session' => [
                     'access_token' => $token->accessToken,

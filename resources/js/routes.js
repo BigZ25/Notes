@@ -2,6 +2,7 @@ import VueRouter from 'vue-router'
 import Notes from "../views/vue/Notes.vue"
 import Settings from "../views/vue/Settings.vue"
 import Login from "../views/vue/Login.vue"
+import Register from "../views/vue/Register.vue"
 import Auth from './plugins/auth.js'
 
 const routes = [
@@ -29,6 +30,14 @@ const routes = [
         component: Login,
         meta: {
             label: 'Logowanie'
+        }
+    },
+    {
+        path: "/register",
+        name: "Register",
+        component: Register,
+        meta: {
+            label: 'Rejestracja'
         }
     },
 ]
