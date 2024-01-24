@@ -10,17 +10,18 @@
     >
         <div class="sticky-note" :class="backgroundClass">
             <div class="header">
-                <input v-model="note.title" placeholder="Title"/>
+                <b-form-input v-model="note.title" placeholder="Tytuł"/>
                 <b-button class="text-dark" @click="deleteNote">
                     <b-icon icon="trash"/>
                 </b-button>
             </div>
-            <textarea v-model="note.content" placeholder="Content"></textarea>
+            <hr class="p-0 m-0">
+            <b-form-textarea v-model="note.content" placeholder="Treść"/>
             <div class="footer">
-                <b-button
+                <div
                     v-for="color in $enum('COLORS_ENUM')"
                     v-bind:key="color.value"
-                    :variant="color.label"
+                    :class="'mr-2 bg-' + color.label"
                     @click="note.color=color.value"
                 />
             </div>
@@ -99,25 +100,66 @@ export default {
 
 .sticky-note > .header > input {
     width: 90%;
+    background-color: rgba(0, 0, 0, 0) !important;
+    border: none !important;
+    color: black;
+}
+
+.sticky-note > .header > input:focus {
+    box-shadow: none;
+}
+
+.sticky-note > .header > input::placeholder {
+    color: black;
+    font-style: italic;
 }
 
 .sticky-note > .header > button {
     width: 10%;
+    background-color: rgba(0, 0, 0, 0) !important;
+    border: none !important;
+    color: black;
 }
 
-.footer {
-    width: 100%;
-    height: 10%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 5px;
+.sticky-note > hr {
+    background-color: rgb(0, 0, 0) !important;
 }
+
 
 .sticky-note > textarea {
     width: 100%;
     height: 80%;
-    border: none;
     resize: none;
+    background-color: rgba(0, 0, 0, 0) !important;
+    border: none !important;
+    color: black;
 }
+
+.sticky-note > textarea:focus {
+    box-shadow: none;
+}
+
+.sticky-note > textarea::placeholder {
+    color: black;
+    font-style: italic;
+}
+
+.footer {
+    background-color: white;
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.footer > div {
+    width: 20px;
+    height: 20px;
+}
+
+.footer > div:hover {
+    cursor: pointer;
+}
+
 </style>
