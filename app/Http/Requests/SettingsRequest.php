@@ -21,4 +21,17 @@ class SettingsRequest extends FormRequest
             'new_password_confirmation' => ['required_with:new_password']
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'To pole jest wymagane',
+            'surname.required' => 'To pole jest wymagane',
+            'email.required' => 'To pole jest wymagane',
+            'email.email' => 'Podana wartość nie jest adresem e-mail',
+            'email.unique' => 'Ten adres e-mail jest już zajęty',
+            'new_password.regex' => 'Hasło musi mieć co najmniej 8 znaków i zawierać co najmniej jedną wielką literę, jedną małą literę, jedną cyfrę, jeden znak specjalny.',
+            'new_password.confirmed' => 'Hasła się różnią'
+        ];
+    }
 }

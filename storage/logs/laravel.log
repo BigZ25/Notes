@@ -17068,3 +17068,122 @@
 #53 /var/www/html/public/index.php(52): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #54 {main}
 "} 
+[2024-01-24 22:23:13] local.ERROR: include(/var/www/html/vendor/composer/../../app/Providers/AppServiceProvider.php): Failed to open stream: No such file or directory {"exception":"[object] (ErrorException(code: 0): include(/var/www/html/vendor/composer/../../app/Providers/AppServiceProvider.php): Failed to open stream: No such file or directory at /var/www/html/vendor/composer/ClassLoader.php:576)
+[stacktrace]
+#0 /var/www/html/vendor/composer/ClassLoader.php(576): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(2, 'include(/var/ww...', '/var/www/html/v...', 576)
+#1 /var/www/html/vendor/composer/ClassLoader.php(576): include()
+#2 /var/www/html/vendor/composer/ClassLoader.php(427): Composer\\Autoload\\{closure}('/var/www/html/v...')
+#3 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(745): Composer\\Autoload\\ClassLoader->loadClass('App\\\\Providers\\\\A...')
+#4 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(679): Illuminate\\Foundation\\Application->resolveProvider('App\\\\Providers\\\\A...')
+#5 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/ProviderRepository.php(75): Illuminate\\Foundation\\Application->register('App\\\\Providers\\\\A...')
+#6 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(659): Illuminate\\Foundation\\ProviderRepository->load(Array)
+#7 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterProviders.php(17): Illuminate\\Foundation\\Application->registerConfiguredProviders()
+#8 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\\Foundation\\Bootstrap\\RegisterProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#9 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(153): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#10 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(137): Illuminate\\Foundation\\Http\\Kernel->bootstrap()
+#11 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(111): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#12 /var/www/html/public/index.php(52): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#13 {main}
+"} 
+[2024-01-24 22:23:15] local.ERROR: include(/var/www/html/vendor/composer/../../app/Providers/AppServiceProvider.php): Failed to open stream: No such file or directory {"exception":"[object] (ErrorException(code: 0): include(/var/www/html/vendor/composer/../../app/Providers/AppServiceProvider.php): Failed to open stream: No such file or directory at /var/www/html/vendor/composer/ClassLoader.php:576)
+[stacktrace]
+#0 /var/www/html/vendor/composer/ClassLoader.php(576): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(2, 'include(/var/ww...', '/var/www/html/v...', 576)
+#1 /var/www/html/vendor/composer/ClassLoader.php(576): include()
+#2 /var/www/html/vendor/composer/ClassLoader.php(427): Composer\\Autoload\\{closure}('/var/www/html/v...')
+#3 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(745): Composer\\Autoload\\ClassLoader->loadClass('App\\\\Providers\\\\A...')
+#4 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(679): Illuminate\\Foundation\\Application->resolveProvider('App\\\\Providers\\\\A...')
+#5 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/ProviderRepository.php(75): Illuminate\\Foundation\\Application->register('App\\\\Providers\\\\A...')
+#6 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(659): Illuminate\\Foundation\\ProviderRepository->load(Array)
+#7 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterProviders.php(17): Illuminate\\Foundation\\Application->registerConfiguredProviders()
+#8 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\\Foundation\\Bootstrap\\RegisterProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#9 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(153): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#10 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(137): Illuminate\\Foundation\\Http\\Kernel->bootstrap()
+#11 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(111): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#12 /var/www/html/public/index.php(52): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#13 {main}
+"} 
+[2024-01-24 22:23:16] local.ERROR: include(/var/www/html/vendor/composer/../../app/Providers/AppServiceProvider.php): Failed to open stream: No such file or directory {"exception":"[object] (ErrorException(code: 0): include(/var/www/html/vendor/composer/../../app/Providers/AppServiceProvider.php): Failed to open stream: No such file or directory at /var/www/html/vendor/composer/ClassLoader.php:576)
+[stacktrace]
+#0 /var/www/html/vendor/composer/ClassLoader.php(576): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(2, 'include(/var/ww...', '/var/www/html/v...', 576)
+#1 /var/www/html/vendor/composer/ClassLoader.php(576): include()
+#2 /var/www/html/vendor/composer/ClassLoader.php(427): Composer\\Autoload\\{closure}('/var/www/html/v...')
+#3 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(745): Composer\\Autoload\\ClassLoader->loadClass('App\\\\Providers\\\\A...')
+#4 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(679): Illuminate\\Foundation\\Application->resolveProvider('App\\\\Providers\\\\A...')
+#5 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/ProviderRepository.php(75): Illuminate\\Foundation\\Application->register('App\\\\Providers\\\\A...')
+#6 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(659): Illuminate\\Foundation\\ProviderRepository->load(Array)
+#7 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterProviders.php(17): Illuminate\\Foundation\\Application->registerConfiguredProviders()
+#8 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\\Foundation\\Bootstrap\\RegisterProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#9 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(153): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#10 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(137): Illuminate\\Foundation\\Http\\Kernel->bootstrap()
+#11 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(111): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#12 /var/www/html/public/index.php(52): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#13 {main}
+"} 
+[2024-01-24 22:23:16] local.ERROR: include(/var/www/html/vendor/composer/../../app/Providers/AppServiceProvider.php): Failed to open stream: No such file or directory {"exception":"[object] (ErrorException(code: 0): include(/var/www/html/vendor/composer/../../app/Providers/AppServiceProvider.php): Failed to open stream: No such file or directory at /var/www/html/vendor/composer/ClassLoader.php:576)
+[stacktrace]
+#0 /var/www/html/vendor/composer/ClassLoader.php(576): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(2, 'include(/var/ww...', '/var/www/html/v...', 576)
+#1 /var/www/html/vendor/composer/ClassLoader.php(576): include()
+#2 /var/www/html/vendor/composer/ClassLoader.php(427): Composer\\Autoload\\{closure}('/var/www/html/v...')
+#3 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(745): Composer\\Autoload\\ClassLoader->loadClass('App\\\\Providers\\\\A...')
+#4 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(679): Illuminate\\Foundation\\Application->resolveProvider('App\\\\Providers\\\\A...')
+#5 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/ProviderRepository.php(75): Illuminate\\Foundation\\Application->register('App\\\\Providers\\\\A...')
+#6 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(659): Illuminate\\Foundation\\ProviderRepository->load(Array)
+#7 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterProviders.php(17): Illuminate\\Foundation\\Application->registerConfiguredProviders()
+#8 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\\Foundation\\Bootstrap\\RegisterProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#9 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(153): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#10 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(137): Illuminate\\Foundation\\Http\\Kernel->bootstrap()
+#11 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(111): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#12 /var/www/html/public/index.php(52): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#13 {main}
+"} 
+[2024-01-24 22:23:16] local.ERROR: include(/var/www/html/vendor/composer/../../app/Providers/AppServiceProvider.php): Failed to open stream: No such file or directory {"exception":"[object] (ErrorException(code: 0): include(/var/www/html/vendor/composer/../../app/Providers/AppServiceProvider.php): Failed to open stream: No such file or directory at /var/www/html/vendor/composer/ClassLoader.php:576)
+[stacktrace]
+#0 /var/www/html/vendor/composer/ClassLoader.php(576): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(2, 'include(/var/ww...', '/var/www/html/v...', 576)
+#1 /var/www/html/vendor/composer/ClassLoader.php(576): include()
+#2 /var/www/html/vendor/composer/ClassLoader.php(427): Composer\\Autoload\\{closure}('/var/www/html/v...')
+#3 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(745): Composer\\Autoload\\ClassLoader->loadClass('App\\\\Providers\\\\A...')
+#4 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(679): Illuminate\\Foundation\\Application->resolveProvider('App\\\\Providers\\\\A...')
+#5 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/ProviderRepository.php(75): Illuminate\\Foundation\\Application->register('App\\\\Providers\\\\A...')
+#6 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(659): Illuminate\\Foundation\\ProviderRepository->load(Array)
+#7 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterProviders.php(17): Illuminate\\Foundation\\Application->registerConfiguredProviders()
+#8 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\\Foundation\\Bootstrap\\RegisterProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#9 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(153): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#10 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(137): Illuminate\\Foundation\\Http\\Kernel->bootstrap()
+#11 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(111): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#12 /var/www/html/public/index.php(52): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#13 {main}
+"} 
+[2024-01-24 22:23:17] local.ERROR: include(/var/www/html/vendor/composer/../../app/Providers/AppServiceProvider.php): Failed to open stream: No such file or directory {"exception":"[object] (ErrorException(code: 0): include(/var/www/html/vendor/composer/../../app/Providers/AppServiceProvider.php): Failed to open stream: No such file or directory at /var/www/html/vendor/composer/ClassLoader.php:576)
+[stacktrace]
+#0 /var/www/html/vendor/composer/ClassLoader.php(576): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(2, 'include(/var/ww...', '/var/www/html/v...', 576)
+#1 /var/www/html/vendor/composer/ClassLoader.php(576): include()
+#2 /var/www/html/vendor/composer/ClassLoader.php(427): Composer\\Autoload\\{closure}('/var/www/html/v...')
+#3 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(745): Composer\\Autoload\\ClassLoader->loadClass('App\\\\Providers\\\\A...')
+#4 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(679): Illuminate\\Foundation\\Application->resolveProvider('App\\\\Providers\\\\A...')
+#5 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/ProviderRepository.php(75): Illuminate\\Foundation\\Application->register('App\\\\Providers\\\\A...')
+#6 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(659): Illuminate\\Foundation\\ProviderRepository->load(Array)
+#7 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterProviders.php(17): Illuminate\\Foundation\\Application->registerConfiguredProviders()
+#8 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\\Foundation\\Bootstrap\\RegisterProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#9 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(153): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#10 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(137): Illuminate\\Foundation\\Http\\Kernel->bootstrap()
+#11 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(111): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#12 /var/www/html/public/index.php(52): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#13 {main}
+"} 
+[2024-01-24 22:23:59] local.ERROR: include(/var/www/html/vendor/composer/../../app/Providers/AuthServiceProvider.php): Failed to open stream: No such file or directory {"exception":"[object] (ErrorException(code: 0): include(/var/www/html/vendor/composer/../../app/Providers/AuthServiceProvider.php): Failed to open stream: No such file or directory at /var/www/html/vendor/composer/ClassLoader.php:576)
+[stacktrace]
+#0 /var/www/html/vendor/composer/ClassLoader.php(576): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(2, 'include(/var/ww...', '/var/www/html/v...', 576)
+#1 /var/www/html/vendor/composer/ClassLoader.php(576): include()
+#2 /var/www/html/vendor/composer/ClassLoader.php(427): Composer\\Autoload\\{closure}('/var/www/html/v...')
+#3 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(745): Composer\\Autoload\\ClassLoader->loadClass('App\\\\Providers\\\\A...')
+#4 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(679): Illuminate\\Foundation\\Application->resolveProvider('App\\\\Providers\\\\A...')
+#5 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/ProviderRepository.php(75): Illuminate\\Foundation\\Application->register('App\\\\Providers\\\\A...')
+#6 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(659): Illuminate\\Foundation\\ProviderRepository->load(Array)
+#7 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterProviders.php(17): Illuminate\\Foundation\\Application->registerConfiguredProviders()
+#8 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\\Foundation\\Bootstrap\\RegisterProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#9 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(153): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#10 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(137): Illuminate\\Foundation\\Http\\Kernel->bootstrap()
+#11 /var/www/html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(111): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#12 /var/www/html/public/index.php(52): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#13 {main}
+"} 

@@ -18,4 +18,11 @@ class TabRequest extends FormRequest
             'name' => stringRules(),
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'To pole jest wymagane',
+        ];
+    }
 }

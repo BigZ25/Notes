@@ -20,4 +20,17 @@ class RegisterRequest extends FormRequest
             'password' => array_merge(stringRules(), [passwordRegexRule()]),
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'To pole jest wymagane',
+            'surname.required' => 'To pole jest wymagane',
+            'email.required' => 'To pole jest wymagane',
+            'email.email' => 'Podana wartość nie jest adresem e-mail',
+            'email.unique' => 'Ten adres e-mail jest już zajęty',
+            'password.required' => 'To pole jest wymagane',
+            'password.regex' => 'Hasło musi mieć co najmniej 8 znaków i zawierać co najmniej jedną wielką literę, jedną małą literę, jedną cyfrę, jeden znak specjalny.'
+        ];
+    }
 }

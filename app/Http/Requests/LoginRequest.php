@@ -18,4 +18,13 @@ class LoginRequest extends FormRequest
             'password' => stringRules(),
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'email.required' => 'To pole jest wymagane',
+            'email.email' => 'Podana wartość nie jest adresem e-mail',
+            'password.required' => 'To pole jest wymagane',
+        ];
+    }
 }
