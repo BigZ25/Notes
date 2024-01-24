@@ -4,12 +4,12 @@
             <b-tabs v-model="activeTab" card>
                 <b-tab v-for="tab in tabs" v-bind:key="tab.id">
                     <template #title>
-                        <span class="text-dark" @click="showDeleteTabModal">
+                        <span class="text-dark">
                              {{ tab.name }}
-                            <b-icon icon="trash"/>
+                            <b-icon icon="trash" @click="showDeleteTabModal"/>
                         </span>
                     </template>
-                    <div style="height: 1000px; width: 100%;" @dblclick="addNote">
+                    <div style="height: 1000px; width: 1200px;" @dblclick="addNote">
                         <sticky-note
                             v-for="note in notes.filter((iNote) => iNote.tab_id == tabs[activeTab].id)"
                             v-bind:key="note.id"
@@ -88,8 +88,6 @@ export default {
             this.$http.post('/api/tabs', data).then(response => {
                 let tab = response.data.data.tab
                 this.tabs.push(tab);
-                const newTabIndex = this.tabs.length + 1;
-                this.activeTab = newTabIndex - 1;
             })
         },
         showDeleteTabModal() {
