@@ -1,6 +1,6 @@
 <?php
 
-function vueResponse($message = null, $type = null, $data = null)
+function vueResponse($message = null, $type = null, $data = null, $status = 200)
 {
     $response = [];
 
@@ -13,5 +13,5 @@ function vueResponse($message = null, $type = null, $data = null)
         $response['data'] = $data;
     }
 
-    return response()->json($response);
+    return response()->json($response, $status);
 }

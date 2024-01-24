@@ -19,7 +19,7 @@ class AuthController extends Controller
         ];
 
         if (!Auth::attempt($credentials)) {
-            return errorResponse("Błędne dane logowania", 422);
+            return vueResponse("Błędne dane logowania", "danger", status: 422);
         }
 
         $token = auth()->user()->createToken('authToken');

@@ -53,15 +53,21 @@ Vue.http.get('/api/state').then(response => {
                     }
 
                     if (response.status === 422) {
-                        for (let key in response.body.errors) {
-                            this.$bvToast.toast(response.body.errors[key], {
+                        if (response.body.errors) {
+                            for (let key in response.body.errors) {
+                                this.$bvToast.toast(response.body.errors[key], {
+                                    title: 'Błąd',
+                                    variant: 'danger',
+                                    autoHideDelay: 5000,
+                                })
+                            }
+                        } else if (response.data.message) {
+                            this.$bvToast.toast(response.data.message, {
                                 title: 'Błąd',
-                                variant: 'danger',
+                                variant: response.data.type ?? 'danger',
                                 autoHideDelay: 5000,
                             })
                         }
-
-                        //this.errors = response.data.errors
                     }
 
                     if (response.status === 401) {
